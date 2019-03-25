@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+</head>
+<body>
+<form>
+    Amount:<input id="amount" placeholder="Nhap so tien" type="text">
+    <br/>
+    From_currency:<select id="fromcurrency" name="fromcurrency">
+    <option value="USD">USD</option>
+    <option value="VND">VND</option>
+</select>
+    <br/>
+    To_currency:<select id="tocurrency" name="tocurrency">
+    <option value="VND">VND</option>
+    <option value="USD">USD</option>
+</select>
+    <br/>
+    <input onclick="Convert();" type="button" value="Convert">
+</form>
+<p> So tien duoc chuyen la:<span id="changed"></span></p>
+
+<script>
+    function Convert() {
+        var input_amount;
+        var kieu_chon = document.getElementById('fromcurrency').value;
+        input_amount = parseInt(document.getElementById('amount').value);
+        var don_vi = document.getElementById('tocurrency').value;
+
+        if (kieu_chon == don_vi) {
+            document.getElementById('changed').innerHTML = input_amount +"   "+ don_vi;
+        } else {
+            if (kieu_chon == "USD") {
+                document.getElementById('changed').innerHTML = input_amount * 23000 + "   " + don_vi;
+            } else
+                document.getElementById('changed').innerHTML = input_amount / 23000 + "   " + don_vi;
+        }
+
+    }
+</script>
+</body>
+</html>
